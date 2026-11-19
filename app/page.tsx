@@ -134,7 +134,7 @@ export default function Home() {
     type: "success",
   });
 
-  // Load products from LocalStorage
+ 
   useEffect(() => {
     const savedProducts = localStorage.getItem("products");
 
@@ -152,7 +152,7 @@ export default function Home() {
       }
     }
 
-    // Add sample products that are missing
+    
     const existingIds = new Set(
       loadedProducts.map((product) => product.id)
     );
@@ -167,14 +167,14 @@ export default function Home() {
     setIsLoaded(true);
   }, []);
 
-  // Save products to LocalStorage
+ 
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem("products", JSON.stringify(products));
     }
   }, [products, isLoaded]);
 
-  // Show notification
+ 
   function showNotification(
     message: string,
     type: "success" | "danger"
@@ -182,7 +182,7 @@ export default function Home() {
     setNotification({ message, type });
   }
 
-  // Add or update product
+
   function handleSave(productData: ProductData) {
     const duplicateCode = products.some(
       (product) =>
@@ -225,7 +225,7 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // Delete product
+
   function handleDelete(id: string) {
     const confirmed = window.confirm(
       "Are you sure you want to delete this product?"
@@ -239,7 +239,7 @@ export default function Home() {
     showNotification("Product deleted successfully!", "success");
   }
 
-  // Sort products
+  
   function handleSort(field: keyof Product) {
     if (sortBy === field) {
       setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
@@ -249,7 +249,7 @@ export default function Home() {
     }
   }
 
-  // Search and sort products
+
   const filteredProducts = useMemo(() => {
     const filtered = products.filter((product) => {
       const search = searchTerm.toLowerCase();
@@ -275,7 +275,7 @@ export default function Home() {
     });
   }, [products, searchTerm, sortBy, sortOrder]);
 
-  // Pagination
+
   const totalPages = Math.ceil(
     filteredProducts.length / PRODUCTS_PER_PAGE
   );
@@ -291,7 +291,7 @@ export default function Home() {
     }
   }, [totalPages, currentPage]);
 
-  // Dashboard statistics
+ 
   const totalStock = products.reduce(
     (total, product) => total + product.quantity,
     0
@@ -326,7 +326,7 @@ export default function Home() {
         }
       />
 
-      {/* Dashboard Statistics */}
+      {/* Dashboard cards */}
       <div className="row g-3 mb-4">
         <div className="col-6 col-lg-3">
           <div className="card border-0 shadow-sm rounded-4 h-100">
