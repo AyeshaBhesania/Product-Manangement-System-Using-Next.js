@@ -1,26 +1,225 @@
-@import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --blossom-pink: #d995ad;
+  --blossom-dark: #bd7893;
+  --blossom-light: #fff1f6;
+  --sky-blue: #dceafa;
+  --text-color: #62515b;
+  --muted-color: #998994;
+  --border-color: #f0e3ea;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  isolation: isolate;
+
+  background:
+    radial-gradient(ellipse at 15% 10%, #ffffff 0%, transparent 35%),
+    radial-gradient(ellipse at 85% 25%, #f9e6f0 0%, transparent 34%),
+    linear-gradient(135deg, #dceafa, #f2f5fc 48%, #fceef5);
+
   font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color);
+}
+
+
+button {
+  cursor: pointer;
+}
+
+/* Main page */
+main.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  padding-top: 42px !important;
+  padding-bottom: 55px !important;
+}
+
+/* Heading */
+main.container > div:first-child {
+  padding: 10px 4px 22px;
+  margin-bottom: 22px !important;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+main.container > div:first-child h2 {
+  color: #79586a;
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+}
+
+main.container > div:first-child p {
+  color: #95818e !important;
+}
+
+/* White glossy cards */
+.card {
+  background: rgba(255, 255, 255, 0.91) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  border-radius: 17px !important;
+
+  box-shadow:
+    0 10px 30px rgba(112, 133, 165, 0.09),
+    0 3px 8px rgba(206, 157, 179, 0.08) !important;
+}
+
+.card-body {
+  padding: 27px !important;
+}
+
+.card h4 {
+  color: #79586a;
+}
+
+/* Statistics */
+main.container .row.g-3.mb-4 .card {
+  background: linear-gradient(145deg, #ffffff, #fff8fb) !important;
+}
+
+main.container .row.g-3.mb-4 .card-body {
+  padding: 22px !important;
+}
+
+main.container .row.g-3.mb-4 h3 {
+  color: var(--blossom-dark);
+}
+
+/* Form labels */
+.form-label {
+  color: #735d69;
+  font-size: 14px;
+}
+
+/* Form inputs */
+.form-control,
+.form-select {
+  background-color: #fffafd;
+  border: 1px solid #eddee6;
+  border-radius: 9px;
+  padding: 11px 13px;
+  color: var(--text-color);
+}
+
+.form-control::placeholder {
+  color: #b9aab2;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #ffffff;
+  border-color: #d99caf;
+  box-shadow: 0 0 0 3px rgba(217, 156, 175, 0.15);
+}
+
+/* Checkboxes */
+.form-check-input {
+  border-color: #d9bdc8;
+}
+
+.form-check-input:checked {
+  background-color: var(--blossom-pink);
+  border-color: var(--blossom-pink);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #dfa9bc, #ca879f);
+  border: none;
+  border-radius: 9px;
+  padding: 10px 21px;
+  box-shadow: 0 4px 12px rgba(201, 133, 157, 0.18);
+}
+
+.btn-primary:hover {
+  background: var(--blossom-dark);
+}
+
+.btn-outline-primary {
+  color: var(--blossom-dark);
+  border-color: #d9a9b9;
+  border-radius: 8px;
+}
+
+.btn-outline-primary:hover {
+  background: var(--blossom-pink);
+  border-color: var(--blossom-pink);
+}
+
+/* Product table */
+.table {
+  --bs-table-hover-bg: #fff5f8;
+}
+
+.table thead th {
+  background-color: #fcf3f6;
+  color: #826575;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 15px 12px;
+  white-space: nowrap;
+  border-bottom: 1px solid #f1e3e9;
+}
+
+.table tbody td {
+  padding: 15px 12px;
+  font-size: 14px;
+  border-color: #f5edf0;
+}
+
+/* Search */
+.input-group-text {
+  background: #fffafd;
+  border-color: #eddee6;
+}
+
+/* Pagination */
+.pagination .page-link {
+  color: var(--blossom-dark);
+  border-color: #f0e1e7;
+  border-radius: 7px;
+  margin: 0 2px;
+}
+
+.pagination .active .page-link {
+  background: var(--blossom-pink);
+  border-color: var(--blossom-pink);
+  color: white;
+}
+
+/* Notifications */
+.alert {
+  border-radius: 10px;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  main.container {
+    padding: 22px 14px !important;
+  }
+
+  .card-body {
+    padding: 19px !important;
+  }
+
+  body::before,
+  body::after {
+    opacity: 0.3;
+    width: 180px;
+  }
 }
